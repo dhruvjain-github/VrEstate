@@ -4,6 +4,20 @@ import { BackgroundGradient } from "./ui/background-gradient";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import Image from 'next/image';
 
+// SubmitButton Component
+const SubmitButton = () => {
+  return (
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold text-sm"
+      type="submit"
+    >
+      View More
+    </motion.button>
+  );
+};
+
 const Works = () => {
   const introText = "Explore our portfolio of completed projects. Each model demonstrates the precision and immersive quality we deliver using tools like Blender.";
 
@@ -11,21 +25,38 @@ const Works = () => {
     {
       title: "Luxury Villa Tour",
       description: "Immersive 3D walkthrough of a beachfront property",
-      image: "/Images/image02.jpg",
+      image: "/Images/luxury.jpeg",
       category: "Residential"
     },
     {
       title: "Commercial Complex",
       description: "Interactive model of a modern office space",
-      image: "/Images/image-1.png.jpg",
+      image: "/Images/commercial.jpeg",
       category: "Commercial"
     },
     {
       title: "Smart Home Experience",
       description: "Virtual tour showcasing home automation features",
-      image: "/Images/image03.jpg",
+      image: "/Images/smart_home.jpeg",
       category: "Residential",
-      
+    },
+    {
+      title: "Discover Elegant Living Space through Interactive Tours",
+      description: "Explore refined living spaces with immersive, interactive tours.",
+      image: "/Images/home-1.jpeg",
+      category: "Residential",
+    },
+    {
+      title: "Find Your Dream Home Without Leaving Your Door",
+      description: "Discover your dream home from the comfort of your space with The VR Estate.",
+      image: "/Images/home-2.jpeg",
+      category: "Residential",
+    },
+    {
+      title: "See Your Next Home in Detail Before Making a Decision",
+      description: "View every detail of your future home before making your decision.",
+      image: "/Images/home-3.jpeg",
+      category: "Commercial",
     }
   ];
 
@@ -60,8 +91,7 @@ const Works = () => {
                   fill
                   priority
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
-                sizes= "(max-width : 768px )  (max-width: 1200px) 50vw, 33vw"
-
+                  sizes="(max-width : 768px )  (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
@@ -74,45 +104,15 @@ const Works = () => {
         ))}
       </div>
 
-      {/* <div className="grid md:grid-cols-3 gap-8 mt-16">
-        {[
-          {
-            icon: "🎯",
-            title: "Precision Modeling",
-            description: "Accurate to the smallest detail"
-          },
-          {
-            icon: "🌐",
-            title: "360° Views",
-            description: "Complete immersive experience"
-          },
-          {
-            icon: "⚡",
-            title: "Fast Delivery",
-            description: "Quick turnaround on projects"
-          }
-        ].map((feature, index) => (
-          <BackgroundGradient key={index} className="rounded-xl bg-black p-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center"
-            >
-              <span className="text-4xl mb-4 block">{feature.icon}</span>
-              <h4 className="text-xl font-bold text-white mb-2">{feature.title}</h4>
-              <p className="text-gray-400">{feature.description}</p>
-            </motion.div>
-          </BackgroundGradient>
-        ))}
-      </div> */}
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        className="text-center mt-24"
+        className="text-center mt-27" // Increased margin-top here
       >
-        <BackgroundGradient className="inline-block rounded-full px-8 py-3 bg-black">
+        {/* Insert SubmitButton above the text */}
+        <SubmitButton />
+
+        <BackgroundGradient className="inline-block rounded-full px-8 mb-7 py-3 bg-black mt-8"> {/* Increased margin-top here */}
           <p className="text-white">
             Ready to transform your property listings?{" "}
             <a 

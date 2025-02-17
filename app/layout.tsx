@@ -29,14 +29,15 @@
 
 
 import { Inter } from 'next/font/google';
-import Script from 'next/script'; // Import next/script
+import { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'The VR Estate',
   description: 'Virtual Reality Solutions for Real Estate',
 };
@@ -49,27 +50,46 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        {/* Google Analytics Script */}
+        <ScrollProgress />
+        <Header />
+        
+        {/* Google Analytics Tag 1 */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-VEFQXV81EY"
         />
         <Script
-          id="google-analytics" // Added the id attribute
+          id="google-analytics-user_traffic"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-VEFQXV81EY');
-            `,
-          }}
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VEFQXV81EY');
+          `}
+        </Script>
+
+        {/* Google Analytics Tag 2 */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-J07RRE2EP5"
         />
-        <ScrollProgress />
-        <Header />
+        <Script
+          id="google-analytics-city"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J07RRE2EP5');
+          `}
+        </Script>   
+  
         {children}
       </body>
     </html>
-  );
-}
+  );   
+}  
+  

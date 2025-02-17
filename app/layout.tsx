@@ -85,7 +85,7 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-J07RRE2EP5');
           `}
-        </Script>
+        </Script>   
   
         {children}
       </body>
